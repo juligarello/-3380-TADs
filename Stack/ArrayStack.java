@@ -82,10 +82,9 @@ public class ArrayStack<T> implements Stack<T> {
     public String toString() {
         String result = "[ ";
         for(int i = 0; i < size; i++) {
-            if(i != size) {
-                result += stack[i] + ", ";
-            }   else    {
-                result += stack[i];
+            result += stack[i];
+            if (i < size - 1) {
+                result += ", ";
             }
         }
         result += "]";
