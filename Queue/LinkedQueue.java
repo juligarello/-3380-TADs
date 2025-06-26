@@ -32,11 +32,11 @@ public class LinkedQueue<T> implements Queue<T> {
         Node aux = new Node();
         aux.item = e;
 
-        if (isEmpty()) {
+        if(isEmpty()) {
             first = aux;
         }   else    {
             Node current = first;
-            while (current.next != null) {
+            while(current.next != null) {
                 current = current.next;
             }
             current.next = aux;
@@ -74,7 +74,7 @@ public class LinkedQueue<T> implements Queue<T> {
 
         @Override
         public T next() {
-            if (!hasNext())
+            if(!hasNext())
                 throw new NoSuchElementException();
             T item = current.item;
             current = current.next;
@@ -84,15 +84,15 @@ public class LinkedQueue<T> implements Queue<T> {
     }
     
     public boolean repOK() {
-        if (size < 0) {
+        if(size < 0) {
             return false;
         }
 
         int countNodes = 0;
         Node current = first;
-        while (current != null) {
-        countNodes++;
-        current = current.next;
+        while(current != null) {
+            countNodes++;
+            current = current.next;
         }
 
         return countNodes == size;
@@ -101,9 +101,9 @@ public class LinkedQueue<T> implements Queue<T> {
     public String toString() {
         String result = "[ ";
         Node current = first;
-        for (int i = 0; i < size; i++) {
+        for(int i = 0; i < size; i++) {
             result += current.item;
-            if (i < size - 1) {
+            if(i < size - 1) {
                 result += ", ";
             }
             current = current.next;

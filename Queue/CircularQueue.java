@@ -26,12 +26,12 @@ public class CircularQueue<T> implements Queue<T> {
         return size;
     }
 
-    private void resultize(int capacity) {
-        if (size >= capacity)
+    private void resize(int capacity) {
+        if(size >= capacity)
             throw new IllegalArgumentException();
 
         T[] copy = (T[]) new Object[capacity];
-        for (int i = 0; i < size; i++) {
+        for(int i = 0; i < size; i++) {
             copy[i] = queue[(first + i) % queue.length];
         }
         queue = copy;
@@ -40,8 +40,8 @@ public class CircularQueue<T> implements Queue<T> {
     }
 
     public void enqueue(T item) {
-        if (size == queue.length)
-            resultize(2 * queue.length);
+        if(size == queue.length)
+            resize(2 * queue.length);
 
         queue[last] = item;
         last = (last + 1) % queue.length;
@@ -49,7 +49,7 @@ public class CircularQueue<T> implements Queue<T> {
     }
 
     public T dequeue() {
-        if (isEmpty())
+        if(isEmpty())
             throw new NoSuchElementException();
 
         T dequeue = queue[first];
@@ -61,7 +61,7 @@ public class CircularQueue<T> implements Queue<T> {
     }
 
     public T peek() {
-        if (isEmpty())
+        if(isEmpty())
             throw new NoSuchElementException();
 
         return queue[last - 1];
@@ -78,7 +78,7 @@ public class CircularQueue<T> implements Queue<T> {
 
         @Override
         public T next() {
-            if (!hasNext())
+            if(!hasNext())
                 throw new NoSuchElementException();
             T item = queue[(first + index) % queue.length];
             index++;
@@ -88,22 +88,22 @@ public class CircularQueue<T> implements Queue<T> {
     }
 
     public boolean repOK() {
-        if (first < 0 || first >= queue.length)
+        if(first < 0 || first >= queue.length)
             return false;
-        if (last < 0 || last >= queue.length)
+        if(last < 0 || last >= queue.length)
             return false;
-        if (size < 0 || size > queue.length)
+        if(size < 0 || size > queue.length)
             return false;
 
         int i = first;
         int count = size;
-        while (count > 0) {
-            if (queue[i] == null)
+        while(count > 0) {
+            if(queue[i] == null)
                 return false;
             i = (i+1) % queue.length;
             count--;
         }
-        if (i != last)
+        if(i != last)
             return false;
 
         return true;
@@ -112,9 +112,9 @@ public class CircularQueue<T> implements Queue<T> {
 
     public String toString() {
         String result = "[ ";
-        for (int i = 0; i < size; i++) {
+        for(int i = 0; i < size; i++) {
             result += queue[(first + i) % queue.length];
-            if (i < size -1)
+            if(i < size -1)
                 result += ", ";
         }
         result += "]";
