@@ -1,19 +1,17 @@
-package Queue.PriorityQueue;
-
 import java.util.NoSuchElementException;
 
-public class Heap<T extends Comparable<? super T>> implements PriorityQueue<T> {
+public class MaxHeap<T extends Comparable<? super T>> implements PriorityQueue<T> {
 
     protected static final int initial_CAPACITY = 8;
     protected T[] queue;
     protected int size;
 
-    public Heap() {
+    public MaxHeap() {
         queue = (T[]) new Object[initial_CAPACITY + 1];
         size = 0;
     }
 
-    public Heap(T[] keys) {
+    public MaxHeap(T[] keys) {
         size = keys.length;
         queue = (T[]) new Object[size + 1];
         for(int i = 0; i < size; i++) {
@@ -139,5 +137,4 @@ public class Heap<T extends Comparable<? super T>> implements PriorityQueue<T> {
 
         return ordered(left) && ordered(right);
     }
-
 }

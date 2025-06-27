@@ -1,5 +1,3 @@
-package Queue.PriorityQueue;
-
 public interface PriorityQueue<T extends Comparable<? super T>> {
 
     /**
